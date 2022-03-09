@@ -41,8 +41,8 @@ function App() {
   };
 
   return (
-    <div className="App">
-      <div>
+    <div className="wrapper">
+      <div className="container">
         <Title></Title>
         <Form setCity={setCity} getWeather={getWeather}></Form>
         <Results results={results}></Results>

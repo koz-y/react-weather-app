@@ -11,11 +11,17 @@ type ResultsPropsType = {
 const Results = (props: ResultsPropsType) => {
   return (
     <div>
-      {props.results.cityName && <p>{props.results.cityName}</p>}
-      {props.results.country && <p>{props.results.country}</p>}
-      {props.results.temperture && <p>{props.results.temperture}</p>}
+      {props.results.cityName && (
+        <div className="results-city">{props.results.cityName}</div>
+      )}
+      {props.results.country && (
+        <div className="results-country">{props.results.country}</div>
+      )}
+      {props.results.temperture && (
+        <div className="results-temp">{props.results.temperture}</div>
+      )}
       {props.results.conditionText && (
-        <div>
+        <div className="results-condition">
           <img src={props.results.icon} alt="icon"></img>
           <span>{props.results.conditionText}</span>
         </div>
