@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState } from "react";
 
 import Title from "./components/Title";
 import Form from "./components/Form";
@@ -23,10 +23,10 @@ function App() {
     conditionText: "",
     icon: "",
   });
-  const getWeather = (event: any) => {
+  const getWeather = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     fetch(
-      "https://api.weatherapi.com/v1/current.json?key=e45f4be218cb49259cf125320222201&q=London&aqi=no"
+      `https://api.weatherapi.com/v1/current.json?key=e45f4be218cb49259cf125320222201&q=${city}&aqi=no`
     )
       .then((res) => res.json())
       .then((data) => {
