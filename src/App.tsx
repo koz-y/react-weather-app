@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import Title from "./components/Title";
 import Form from "./components/Form";
 import Results from "./components/Results";
+import Loading from "./components/Loading";
 
 import "./App.css";
 
@@ -15,6 +16,7 @@ type ResultsStateType = {
 };
 
 function App() {
+  const [loading, setLoading] = useState<boolean>(false);
   const [city, setCity] = useState<string>("");
   const [results, setResults] = useState<ResultsStateType>({
     country: "",
@@ -25,6 +27,7 @@ function App() {
   });
   const getWeather = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+    setLoading(true);
     fetch(
       `https://api.weatherapi.com/v1/current.json?key=e45f4be218cb49259cf125320222201&q=${city}&aqi=no`
     )
@@ -38,6 +41,7 @@ function App() {
           icon: data.current.condition.icon,
         });
         setCity("");
+        setLoading(false);
       })
       .catch((err) =>
         alert(
@@ -51,7 +55,7 @@ function App() {
       <div className="container">
         <Title></Title>
         <Form setCity={setCity} getWeather={getWeather} city={city}></Form>
-        <Results results={results}></Results>
+        {loading ? <Loading></Loading> : <Results results={results}></Results>}
       </div>
     </div>
   );

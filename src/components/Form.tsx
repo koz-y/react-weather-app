@@ -14,6 +14,7 @@ const Form = ({ getWeather, setCity, city }: FormPropsType) => {
           placeholder="City name"
           onChange={(event) => setCity(event.target.value)}
           value={city}
+          required
         ></input>
         <button type="submit">Get Weather</button>
       </form>
