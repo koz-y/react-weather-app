@@ -37,6 +37,7 @@ function App() {
           conditionText: data.current.condition.text,
           icon: data.current.condition.icon,
         });
+        setCity("");
       })
       .catch((err) =>
         alert(
@@ -49,7 +50,7 @@ function App() {
     <div className="wrapper">
       <div className="container">
         <Title></Title>
-        <Form setCity={setCity} getWeather={getWeather}></Form>
+        <Form setCity={setCity} getWeather={getWeather} city={city}></Form>
         <Results results={results}></Results>
       </div>
     </div>
